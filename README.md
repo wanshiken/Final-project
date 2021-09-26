@@ -10,39 +10,26 @@
 
 | Ruta | Función | Método |
 | ------ | ------ | ----- |
-| / | Ruta raíz, pagina home| GET
+| / | Ruta raíz, home| GET
 
 
-## Ruta ('/') login/signup
-| Ruta | Función | Método |
-| ------ | ------ | ----- |
-| /login | Inicio de sesión | GET |
-| /login | Inicio de sesión | POST |
-| /sign-up | Crear cuenta  | GET |
-| /sign-up | Crear cuenta | POST |
-| /logout | Cerrar Sesion | GET |
 
-## Ruta ('/auth') login/signup con Google
-| Ruta | Función | Método |
-| ------ | ------ | ----- |
-| /auth/google | Inicio de sesión | GET |
-| /auth/google/redirect | redirección tras inicio | GET |
+
 
 ## Ruta ('/admin') rutas para Rol Admin
 | Ruta | Función | Método |
 | ------ | ------ | ----- |
-| /admin | Listado de eventos para aceptar o rechazar | GET |
-| /admin/users | Listado de Usuarios | GET |
-| /admin/users/:id | Detalles de usuarios  | GET |
-| /admin/users/:id/editar | Form para editar usuarios | GET |
-| /admin/users/:id/editar | Envio de form | POST |
-| /admin/users/:id/eliminar | Borrado de usuario | POST |
+| /admin | Perfil del admin | GET |
+| /admin/beats | Lista de los sonidos que vaya subiendo | GET |
+| /admin/beats/:id | Detalles de los sonidos  | GET |
+| /admin/beats/:id/editar | Editar sonidos | GET |
+| /admin/beats/:id/eliminar | Borrar sonidos | POST |
 
-## Ruta ('/company') rutas para Rol Empresa
+## Ruta ('/beats') rutas para Rol cliente
 | Ruta | Función | Método |
 | ------ | ------ | ----- |
-| /company/profile | Perfil de la empresa con tus eventos | GET |
-| /company/:id | Detalles del evento | GET |
+| /beats | Listado de sonidos | GET |
+| /beats/:id | Detalles de los sonidos | GET |
 | /company/:id | Modificar datos  | POST |
 | /company/crear | Form para crear evento | GET |
 | /company/crear | Envio de form | POST |
