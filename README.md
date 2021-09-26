@@ -10,7 +10,7 @@
 | / | Ruta raíz, home| GET
 
 
-## Ruta ('/music') para ver listado de canciones de artista
+## Ruta ('/music') 
 | Ruta | Función | Método |
 | ------ | ------ | ----- |
 | /music | listado de canciones de artista | GET |
@@ -26,11 +26,12 @@
 | /admin/beats/:id | Detalles de los sonidos  | GET |
 | /admin/beats/:id/editar | Editar sonidos | GET |
 | /admin/beats/:id/eliminar | Borrar sonidos | POST |
+| /admin/music/:id/editar | Editar musica | GET |
+| /admin/music/:id/eliminar | Borrar musica | POST |
 
 
-## Ruta ('/beats') rutas para Rol cliente
+## Ruta ('/beats') 
 | Ruta | Función | Método |
 | ------ | ------ | ----- |
 | /beats | Listado de sonidos | GET |
 | /beats/:id | Detalles de los sonidos | GET |
-| /beats/:id | Modificar datos  | POST |
