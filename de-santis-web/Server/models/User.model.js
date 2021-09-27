@@ -11,11 +11,10 @@ const userSchema = new Schema(
             type: String,
             unique: true
         },
-
+        
         rol: {
             type: String,
-            enum: ['admin'],
-            default: 'client',
+            enum: ['admin', 'client']
         },
 
         image: {

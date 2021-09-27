@@ -1,8 +1,10 @@
 const { Schema, model } = require("mongoose");
 
-
 const trackSchema = new Schema(
   {
+  url: {
+    type: String
+  },
 
   cover: {
     type: String,
@@ -20,9 +22,11 @@ const trackSchema = new Schema(
 
   Bpm: {
     type: Number
+  },
+
+  price: {
+    type: Number
   }
-
-
 });
 
 const Track = model("Track", trackSchema);
