@@ -1,8 +1,6 @@
-const router = require("express").Router();
-
-/* GET home page */
-router.get("/", (req, res, next) => {
-  res.render("index");
-});
-
-module.exports = router;
+module.exports = (app) =>{
+    app.use('/', require('./base.routes'))
+    app.use('/beats', require('./beats.routes'))
+    app.use('/admin', require('./admin.routes'))
+    app.use('/music', require('./music.routes'))
+}

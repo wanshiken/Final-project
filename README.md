@@ -24,10 +24,10 @@
 | /admin/beats | Lista de los sonidos que vaya subiendo | GET |
 | /admin/beats | Estadisticas de venta (si da tiempo) | GET |
 | /admin/beats/:id | Detalles de los sonidos  | GET |
-| /admin/beats/:id/editar | Editar sonidos | GET |
-| /admin/beats/:id/eliminar | Borrar sonidos | POST |
-| /admin/music/:id/editar | Editar musica | GET |
-| /admin/music/:id/eliminar | Borrar musica | POST |
+| /admin/beats/:id/editar | Editar sonidos | PUT |
+| /admin/beats/:id/eliminar | Borrar sonidos | DELETE |
+| /admin/music/:id/editar | Editar musica | PUT |
+| /admin/music/:id/eliminar | Borrar musica | DELETE |
 
 
 ## Ruta ('/beats') 

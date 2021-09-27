@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 
-const musicSchema = new Schema(
+const trackSchema = new Schema(
   {
 
   cover: {
@@ -25,6 +25,6 @@ const musicSchema = new Schema(
 
 });
 
-const Music = model("User", musicSchema);
+const Track = model("Track", trackSchema);
 
-module.exports = Music;
+module.exports = Track;
