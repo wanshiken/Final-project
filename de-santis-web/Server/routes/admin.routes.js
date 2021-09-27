@@ -1,6 +1,7 @@
 const express = require("express");
 const Track = require('../models/Track.model')
 const router = express.Router();
+const fileUploader = require('../config/cloudynary.config')
 
 
 // PERFIL ADMIN
@@ -14,12 +15,20 @@ router.get('/beats', (req, res) => {
     res.json()
 })
 
-//post para crear el beat 
-router.post("/beats", (req, res) => {
+// renderizar formulario
+router.get('/beats', (req, res) => {
+    Track.find()
+        .select('')
+        .then(tracks => res.status(200).json(tracks))
+        .catch(err => res.status(500).json({ code: 500, message: "Error retrieving tracks", err }))
+})
+
+// enviar formulario 
+router.post("/beats", fileUploader.single(''), (req, res) => {
     const track = req.body;
     Track.create(track)
-        .then(track => res.status(200).json({ track, message: "Coaster created" }))
-        .catch(err => res.status(500).json({ code: 500, message: "Error creating coaster", err }))
+        .then(track => res.status(200).json({ track, message: "Track created" }))
+        .catch(err => res.status(500).json({ code: 500, message: "Error submiting track", err }))
 })
 
 //Estadistica de venta
