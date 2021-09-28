@@ -1,5 +1,5 @@
 {
-  "name": "De-Santis-web",
+  "name": "de-santis-web",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -7,16 +7,38 @@
     "dev": "nodemon server.js"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cloudinary": "^1.27.0",
+    "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.5",
-    "create-react-app": "^4.0.3",
+    "cors": "^2.8.5",
+    "create-react-app": "^1.2.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "hbs": "^4.1.2",
     "mongoose": "^6.0.7",
     "morgan": "^1.10.0",
+    "multer": "^1.4.3",
+    "multer-storage-cloudinary": "^4.0.0",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.13"
-  }
+  },
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wanshiken/Final-project.git"
+  },
+  "keywords": [
+    "Juanb2311"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wanshiken/Final-project/issues"
+  },
+  "homepage": "https://github.com/wanshiken/Final-project#readme",
+  "description": ""
 }

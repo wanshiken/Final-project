@@ -17,7 +17,6 @@ const trackSchema = new Schema(
         clients: {
             type: [Schema.Types.ObjectId],
             ref: User,
-            default: 'unknown'
         },
 
         //TODO añadir precio, cantidad de descarga, colocar numeros de descarga, fecha de compra referemncia al track, y datos de usuario 

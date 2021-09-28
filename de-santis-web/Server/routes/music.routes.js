@@ -11,3 +11,5 @@ router.get('/:id', (req, res) => {
     Track.findById()
     res.json()
 })
+
+module.exports = router
