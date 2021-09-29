@@ -5,6 +5,8 @@ import Login from '../pages/Login/Login';
 import Profile from '../pages/Admin/Profile/Profile';
 import Signup from '../pages/Signup/Signup';
 import BeatsForm from '../pages/Admin/BeatsForm/BeatsForm'
+import BeatsPage from '../pages/BeatsPage/BeatsPage';
+import BeatsDetails from '../pages/BeatsDetails/BeatsDetails';
 
 
 const Routes = ({ storeUser, loggedUser }) => {
@@ -13,8 +15,10 @@ const Routes = ({ storeUser, loggedUser }) => {
             <Route exact path="/" render={() => <HomePage />} />
             <Route exact path="/registro" render={(props) => <Signup {...props} />} />
             <Route exact path="/iniciar-sesion" render={(props) => <Login storeUser={storeUser} {...props} />} />
-            <Route path="/admin" render={() => loggedUser ? <Profile loggedUser={loggedUser} /> : <Redirect to="/iniciar-sesion" />} />
-            <Route path="/admin" render={() => <BeatsForm />} />
+            <Route exact path="/admin" render={() => loggedUser ? <Profile loggedUser={loggedUser} /> : <Redirect to="/iniciar-sesion" />} />
+            <Route exact path="/admin/beats" render={() => <BeatsForm />} />
+            <Route exact path="/beats" render={() => <BeatsPage />} />
+            <Route path="/beats/:id" render={(props) => <BeatsDetails {...props} />} />
         </Switch>
     )
 }

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Form, } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import BeatsService from '../../../../services/beats.service'
+import UploadsService from '../../../../services/uploads.service'
+
 
 export default class BeatsForm extends Component {
     state = {
@@ -10,9 +13,12 @@ export default class BeatsForm extends Component {
         time: "",
         bpm: 0,
         price:""
+        
     }
+    
 
     beatService = new BeatsService();
+    uploadService = new UploadsService()
 
     handleChange = (e) => {
         const { value, name } = e.target;
@@ -22,6 +28,28 @@ export default class BeatsForm extends Component {
             [name]: value
         })
     }
+
+    handleFile = (e) => {
+        this.setState({
+            ...this.state,
+            isLoading: true
+        })
+
+        const uploadData = new FormData()
+        uploadData.append('imageData', e.target.files[0])
+
+        this.uploadService.uploadImg(uploadData)
+            .then(res => {
+                this.setState({
+                    ...this.state,
+                    isLoading: false,
+                    cover: res.data.cloudinary_url
+                })
+            })
+            .catch(err => alert("Error, esto lo hacéis vosotros."))
+    }
+
+
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -44,6 +72,7 @@ export default class BeatsForm extends Component {
 
     render() {
         return (
+            <>
             <Form onSubmit={this.handleSubmit}>
                 <Form.Group className="mb-3" controlId="title">
                     <Form.Label>Título: </Form.Label>
@@ -51,35 +80,40 @@ export default class BeatsForm extends Component {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="cover">
-                    <Form.Label>Descripción: </Form.Label>
-                    <Form.Control onChange={(e) => this.handleChange(e)} name="description" value={this.state.description} type="text" placeholder="Introduce descripción" />
+                    <Form.Label>Cover: </Form.Label>
+                    <Form.Control onChange={(e) => this.handleFile(e)} name="cover" type="file"  />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="url">
-                    <Form.Label>Inversiones: </Form.Label>
-                    <Form.Control onChange={(e) => this.handleChange(e)} name="inversions" value={this.state.inversions} type="number" placeholder="Introduce inversiones" />
+                    <Form.Label>Music Url: </Form.Label>
+                    <Form.Control onChange={(e) => this.handleChange(e)} name="url" value={this.state.url} type="text" placeholder="Introduce la url del track" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="time">
-                    <Form.Label>Longitud: </Form.Label>
-                    <Form.Control onChange={(e) => this.handleChange(e)} name="length" value={this.state.length} type="number" placeholder="Introduce longitud" />
+                    <Form.Label>Tiempo: </Form.Label>
+                    <Form.Control onChange={(e) => this.handleChange(e)} name="time" value={this.state.time} type="text" placeholder="Introduce el tiempo" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="bpm">
-                    <Form.Label>Imagen: </Form.Label>
-                    <Form.Control onChange={(e) => this.handleChange(e)} name="imageUrl" value={this.state.imageUrl} type="text" placeholder="Introduce imagen" />
+                    <Form.Label>Bpm: </Form.Label>
+                    <Form.Control onChange={(e) => this.handleChange(e)} name="bpm" value={this.state.bpm} type="number" placeholder="Introduce bpm" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="price">
-                    <Form.Label>Imagen: </Form.Label>
-                    <Form.Control onChange={(e) => this.handleChange(e)} name="imageUrl" value={this.state.imageUrl} type="text" placeholder="Introduce imagen" />
+                    <Form.Label>Precio: </Form.Label>
+                    <Form.Control onChange={(e) => this.handleChange(e)} name="price" value={this.state.price} type="text" placeholder="Introduce el precio" />
                 </Form.Group>
-
+            
 
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>
+
+            <Button as={Link} to='/admin' variant="dark" type="submit">
+                    Volver
+                </Button>
+                </>
         )
     }
 }

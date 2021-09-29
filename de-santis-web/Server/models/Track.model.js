@@ -17,7 +17,7 @@ const trackSchema = new Schema(
   },
   
   time: {
-    type: Number
+    type: String
   },
 
   Bpm: {
@@ -25,7 +25,7 @@ const trackSchema = new Schema(
   },
 
   price: {
-    type: Number
+    type: String
   }
 });
 

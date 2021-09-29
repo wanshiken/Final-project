@@ -19,6 +19,7 @@ class App extends Component {
   }
 
   storeUser = (user) => this.setState({ loggedUser: user })
+  
   fetchUser = () => {
     this.authService.isloggedin()
     .then(res => this.storeUser(res.data))
@@ -26,7 +27,7 @@ class App extends Component {
     
   }
 
-
+  
   render = () => {
     return (
       <>

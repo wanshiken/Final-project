@@ -9,10 +9,10 @@ const bcryptSalt = 10
 // Signup (post)
 router.post('/signup', (req, res) => {
 
-    const { name, pwd } = req.body
+    const { username, pwd } = req.body
 
     User
-        .findOne({ name })
+        .findOne({ username })
         .then(user => {
 
             if (user) {
@@ -23,9 +23,15 @@ router.post('/signup', (req, res) => {
             const salt = bcrypt.genSaltSync(bcryptSalt)
             const hashPass = bcrypt.hashSync(pwd, salt)
             User
-                .create({ name, password: hashPass })
-                .then(() => res.json({ code: 200, message: 'Admin created' }))
-                .catch(err => res.status(500).json({ code: 500, message: 'DB error while creating admin', err: err.message }))
+                .create({ username, password: hashPass })
+                .then((user) => {
+                    console.log(user, 'ahora siiii')
+                    res.json({ code: 200, message: 'Admin created' })
+                })
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).json({ code: 500, message: 'DB error while creating admin', err: err.message })
+                })
         })
         .catch(err => res.status(500).json({ code: 500, message: 'DB error while fetching admin', err: err.message }))
 })
@@ -33,10 +39,10 @@ router.post('/signup', (req, res) => {
 // Login (post)
 router.post('/login', (req, res) => {
 
-    const { name, pwd } = req.body
+    const { username, pwd } = req.body
 
     User
-        .findOne({ name })
+        .findOne({ username })
         .then(user => {
 
             if (!user) {

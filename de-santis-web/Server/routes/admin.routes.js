@@ -4,10 +4,7 @@ const router = express.Router();
 const fileUploader = require('../config/cloudinary.config')
 
 
-// PERFIL ADMIN
-router.get('/', (req, res) => {
-    res.json()
-})
+
 
 // ver beats
 router.get('/beats', (req, res) => {
@@ -19,18 +16,13 @@ router.get('/beats', (req, res) => {
 })
 
 // crear los beats
-router.post("/beats", /*fileUploader.single(''),*/ (req, res) => {
+router.post("/beats", fileUploader.single('imageData'), (req, res) => {
     const {title, cover, url, time, bpm, price} = req.body
+    console.log(req.body)
     Track
         .create({ title, cover, url, time, bpm, price })
         .then(track => res.status(200).json({ track, message: "Track created" }))
         .catch(err => res.status(500).json({ code: 500, message: "Error submiting track", err }))
-})
-
-//Estadistica de venta
-router.get('/beats', (req, res) => {
-    Track.find()
-    res.json()
 })
 
 //DETALLES DE BEATS
@@ -59,6 +51,13 @@ router.delete('/beats/:id/eliminar', (req, res) => {
         .then(() => res.status(200).json({ message: `Track ${id} deleted` }))
         .catch(err => res.status(500).json({ code: 500, message: "Error deleting track", err }))
 })
+
+//Estadistica de venta
+router.get('/beats', (req, res) => {
+    Track.find()
+    res.json()
+})
+
 
 // ** RUTA PARA ADMIN MUSIC **
 

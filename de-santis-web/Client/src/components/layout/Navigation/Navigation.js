@@ -14,7 +14,7 @@ function Navigation(props) {
     return (
         <Navbar bg="light" expand="md" className="mb-5">
             <Container>
-                <Navbar.Brand href="/"> ☺ Home</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/"> ☺ Home</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
@@ -24,6 +24,7 @@ function Navigation(props) {
                         {props.loggedUser ?
                             <>
                                 <Link className="nav-link" to="/admin">Mi perfil</Link>
+                                <Link className="nav-link" to="/beats">Beats</Link>
                                 <span className="nav-link" onClick={logout}>Logout</span>
                             </>
                             :

@@ -9,7 +9,9 @@ class BeatsService {
 
     getBeats = () => this.instance.get("/");
     getOneBeat= (id) => this.instance.get(`/${id}`);
+    editBeat = (id) => this.instance.put(`/${id}/editar`);
     createBeat = (track) => this.instance.post("/", track);
+    deleteBeat = (id) => this.instance.delete(`/${id}/eliminar`);
 }
 
 export default BeatsService;

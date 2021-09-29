@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, FormControl, InputGroup, Modal, Row } from 'react-bootstrap'
 import BeatsForm from '../BeatsForm/BeatsForm';
 import BeatsService from '../../../../services/beats.service'
+import BeatItem from '../BeatItem/BeatItem';
 
 
 export default class BeatsList extends Component {
@@ -17,21 +18,21 @@ export default class BeatsList extends Component {
     }
 
     componentDidMount() {
-        this.refreshCoasters();
+        this.refreshBeats();
     }
 
-    refreshCoasters = () => {
-        this.beatService.getCoasters()
+    refreshBeats = () => {
+        this.beatService.getBeats()
             .then(res => {
                 this.setState({
                     ...this.state,
-                    coasters: res.data
+                    beats: res.data
                 })
             })
             .catch(err => console.error(err))
     }
 
-    displayCoasters = () => {
+    displayBeats = () => {
         const filteredbeats = this.state.beats.filter(beat => beat.title.toLowerCase().includes(this.state.searchValue.toLowerCase()))
         return (
             filteredbeats.length > 0 ?
@@ -44,16 +45,7 @@ export default class BeatsList extends Component {
         )
     }
 
-    openModal = () => {
-        this.setState({
-            ...this.state,
-            show: true
-        })
-    }
 
-    closeModal = () => {
-        this.setState({ ...this.state, show: false });
-    }
 
     handleChange = (e) => {
         const { name, value } = e.target;
@@ -65,10 +57,10 @@ export default class BeatsList extends Component {
 
     render() {
         return (
-            this.state.coasters ?
+            this.state.beats ?
                 <div>
-                    <Button block className="mt-2" onClick={() => this.openModal()}>Añadir montaña rusa</Button>
-
+                   
+                    
                     <InputGroup className="mb-3 mt-4">
                         <FormControl
                             onChange={this.handleChange}
@@ -79,17 +71,9 @@ export default class BeatsList extends Component {
                         />
                     </InputGroup>
 
-                    <Modal show={this.state.show} onHide={() => this.closeModal()}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Añadir montaña rusa</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <BeatsForm closeModal={() => this.closeModal()} refreshCoasters={this.refreshCoasters} />
-                        </Modal.Body>
-                    </Modal>
                     <Row className="mt-4">
                         {
-                            this.displayCoasters()
+                            this.displayBeats()
                         }
                     </Row>
                 </div>
