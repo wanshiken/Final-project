@@ -1,7 +1,8 @@
 const express = require("express");
 const Track = require('../models/Track.model')
 const router = express.Router();
-const fileUploader = require('../config/cloudinary.config')
+const {imgUpload, audioUpload} = require('../config/cloudinary.config')
+const { checkId, isLoggedIn, checkRoles } = require("../middleware/middleware")
 
 
 
@@ -11,14 +12,13 @@ router.get('/beats', (req, res) => {
     Track
         .find()
         .select('title cover url time bpm price')
-        .then(tracks => res.status(200).json(tracks))
+        .then(tracks => res.status(200).json(tracks), )
         .catch(err => res.status(500).json({ code: 500, message: "Error retrieving tracks", err }))
 })
 
 // crear los beats
-router.post("/beats", fileUploader.single('imageData'), (req, res) => {
+router.post("/beats", imgUpload.single('imageData'), audioUpload.single('audioData'), checkRoles('admin'), (req, res) => {
     const {title, cover, url, time, bpm, price} = req.body
-    console.log(req.body)
     Track
         .create({ title, cover, url, time, bpm, price })
         .then(track => res.status(200).json({ track, message: "Track created" }))

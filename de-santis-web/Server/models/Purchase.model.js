@@ -2,30 +2,40 @@ const { Schema, model } = require("mongoose");
 const User = require("./User.model");
 const Track = require('./Track.model')
 
-const trackSchema = new Schema(
+const purchaseSchema = new Schema(
     {
-
-        downloads: {
-            type: Number
+        track: {
+            type: Schema.Types.ObjectId,
+            ref: Track,
         },
 
         date: {
-            type: date,
-            ref: Track
+            type: Date,
+            default: Date.now
         },
 
-        clients: {
-            type: [Schema.Types.ObjectId],
+        email: {
+            type: String,
+            required: true
+        },
+
+        name: {
+            type: String,
+            required: true
+        },
+        
+        phone: {
+            type: Number
+        },
+        
+        client: {
+            type: Schema.Types.ObjectId,
             ref: User,
         },
-
-        //TODO añadir precio, cantidad de descarga, colocar numeros de descarga, fecha de compra referemncia al track, y datos de usuario 
-        // hacer modelo purchase, y formulario para obtener detalles de cliente.
-        // colocar modelo user para referenciar esos datos cuando llenen el formulario.
 
 
     });
 
-const Track = model("Track", trackSchema);
+const Purchase = model("Purchase", purchaseSchema);
 
-module.exports = Track;
+module.exports = Purchase;

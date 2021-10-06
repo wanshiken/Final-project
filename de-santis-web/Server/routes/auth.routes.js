@@ -11,12 +11,18 @@ router.post('/signup', (req, res) => {
 
     const { username, pwd } = req.body
 
+    if (pwd.length === 0) {
+    res.send('/signup', {errMsg: 'La contraseña es obligatoria'})
+
+    return
+    }
+
     User
         .findOne({ username })
         .then(user => {
 
             if (user) {
-                res.status(400).json({ code: 400, message: 'Admin already exixts' })
+                res.status(400).json({ code: 400, message: 'User already exixts' })
                 return
             }
 
@@ -29,7 +35,7 @@ router.post('/signup', (req, res) => {
                     res.json({ code: 200, message: 'Admin created' })
                 })
                 .catch(err => {
-                    console.log(err)
+                    res.json(err)
                     res.status(500).json({ code: 500, message: 'DB error while creating admin', err: err.message })
                 })
         })
@@ -41,12 +47,17 @@ router.post('/login', (req, res) => {
 
     const { username, pwd } = req.body
 
+    if (pwd.length === 0 || username.length === 0) {
+        res.render('/login', { errorMsg: 'Rellena los campos' })
+        return
+    }
+
     User
         .findOne({ username })
         .then(user => {
 
             if (!user) {
-                res.status(401).json({ code: 401, message: 'admin not registered' })
+                res.status(401).json({ code: 401, message: 'user not found' })
                 return
             }
 
