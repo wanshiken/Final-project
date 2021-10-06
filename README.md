@@ -21,7 +21,9 @@
 | Ruta | Función | Método |
 | ------ | ------ | ----- |
 | /admin | Perfil del admin | GET |
-| /admin/beats | Lista de los sonidos que vaya subiendo | GET |
+| /admin/beats | Lista de los sonidos  | GET |
+| /admin/beats | Formulario de creacion de beats | GET |
+| /admin/beats | Envio de formulario | POST |
 | /admin/beats | Estadisticas de venta (si da tiempo) | GET |
 | /admin/beats/:id | Detalles de los sonidos  | GET |
 | /admin/beats/:id/editar | Editar sonidos | PUT |
