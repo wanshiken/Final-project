@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
-import { Button, FormControl, InputGroup, Modal, Row } from 'react-bootstrap'
-import BeatsForm from '../BeatsForm/BeatsForm';
+import { FormControl, InputGroup, Row } from 'react-bootstrap'
+// import BeatsForm from '../BeatsForm/BeatsForm';
 import BeatsService from '../../../../services/beats.service'
 import BeatItem from '../BeatItem/BeatItem';
 
 
+
+
 export default class BeatsList extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             beats: null,
             show: false,
             searchValue: ""
+
         }
         this.beatService = new BeatsService();
     }
@@ -38,7 +41,7 @@ export default class BeatsList extends Component {
             filteredbeats.length > 0 ?
                 filteredbeats.map(beat => {
                     return (
-                        <BeatItem key={beat._id} {...beat} />
+                        <BeatItem loggedUser={this.props.loggedUser} key={beat._id} {...beat} refreshBeats={this.refreshBeats} />
                     )
                 }) :
                 <p>Sin resultados</p>
@@ -58,9 +61,10 @@ export default class BeatsList extends Component {
     render() {
         return (
             this.state.beats ?
+
                 <div>
-                   
                     
+
                     <InputGroup className="mb-3 mt-4">
                         <FormControl
                             onChange={this.handleChange}
@@ -79,6 +83,12 @@ export default class BeatsList extends Component {
                 </div>
                 :
                 <h3>Loading...</h3>
+
+                
+
+                
+
+
         )
     }
 }

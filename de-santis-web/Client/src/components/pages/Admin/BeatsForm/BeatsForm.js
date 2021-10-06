@@ -12,8 +12,7 @@ export default class BeatsForm extends Component {
         url: "",
         time: "",
         bpm: 0,
-        price:""
-        
+        price:0        
     }
     
 
@@ -40,6 +39,7 @@ export default class BeatsForm extends Component {
 
         this.uploadService.uploadImg(uploadData)
             .then(res => {
+                console.log(res)
                 this.setState({
                     ...this.state,
                     isLoading: false,
@@ -49,22 +49,42 @@ export default class BeatsForm extends Component {
             .catch(err => alert("Error, esto lo hacéis vosotros."))
     }
 
+    handleFileAudio = (e) => {
+        this.setState({
+            ...this.state,
+            isLoading: true
+        })
 
+        const uploadData = new FormData()
+        uploadData.append('audioData', e.target.files[0])
+
+        this.uploadService.uploadAudio(uploadData)
+            .then(res => {
+                //console.log(res)
+
+                this.setState({
+                    ...this.state,
+                    isLoading: false,
+                    url: res.data.cloudinary_url
+                })
+            })
+            .catch(err => alert("Error, esto lo hacéis vosotros."))
+        }
+
+    
 
     handleSubmit = (e) => {
         e.preventDefault();
 
         this.beatService.createBeat(this.state)
             .then(() => {
-                this.props.closeModal();
-                this.props.refreshBeats();
                 this.setState({
                     title: "",
                     cover: "",
                     url: "",
                     time: "",
                     bpm: 0,
-                    price: ""
+                    price: 0
                 })
             })
             .catch(err => console.error(err))
@@ -72,7 +92,7 @@ export default class BeatsForm extends Component {
 
     render() {
         return (
-            <>
+            <div>
             <Form onSubmit={this.handleSubmit}>
                 <Form.Group className="mb-3" controlId="title">
                     <Form.Label>Título: </Form.Label>
@@ -85,8 +105,8 @@ export default class BeatsForm extends Component {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="url">
-                    <Form.Label>Music Url: </Form.Label>
-                    <Form.Control onChange={(e) => this.handleChange(e)} name="url" value={this.state.url} type="text" placeholder="Introduce la url del track" />
+                    <Form.Label>Mp3 or Wav: </Form.Label>
+                    <Form.Control onChange={(e) => this.handleFileAudio(e)} name="url" type="file" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="time">
@@ -101,7 +121,7 @@ export default class BeatsForm extends Component {
 
                 <Form.Group className="mb-3" controlId="price">
                     <Form.Label>Precio: </Form.Label>
-                    <Form.Control onChange={(e) => this.handleChange(e)} name="price" value={this.state.price} type="text" placeholder="Introduce el precio" />
+                    <Form.Control onChange={(e) => this.handleChange(e)} name="price" value={this.state.price} type="number" placeholder="Introduce el precio" />
                 </Form.Group>
             
 
@@ -110,10 +130,7 @@ export default class BeatsForm extends Component {
                 </Button>
             </Form>
 
-            <Button as={Link} to='/admin' variant="dark" type="submit">
-                    Volver
-                </Button>
-                </>
+                </div>
         )
     }
 }

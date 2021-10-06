@@ -1,3 +1,4 @@
+import React from 'react'
 import { Component } from "react"
 import { Button, Modal } from 'react-bootstrap'
 import { Container } from "react-bootstrap"
@@ -51,7 +52,7 @@ class Profile extends Component {
                     <h3>
                         Tus Beats:
 
-                       <BeatsList/>
+                        <BeatsList loggedUser={this.props.loggedUser} />
 
                     </h3>
                 </div>

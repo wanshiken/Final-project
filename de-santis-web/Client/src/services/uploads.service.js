@@ -9,6 +9,8 @@ class UploadsService {
     }
 
     uploadImg = (imageForm) => this.instance.post("/image", imageForm)
+
+    uploadAudio = (soundform) => this.instance.post("/audio", soundform)
 }
 
 export default UploadsService;

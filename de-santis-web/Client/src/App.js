@@ -1,9 +1,12 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
 import Navigation from './components/layout/Navigation/Navigation';
 import Routes from './components/routes';
 import { Component } from 'react';
 import AuthService from './services/auth.service';
+import { Spinner } from 'react-bootstrap';
+
+
 
 class App extends Component {
   constructor() {
@@ -11,7 +14,6 @@ class App extends Component {
     this.state = {
       loggedUser: undefined
     }
-    this.authService = new AuthService()
   }
 
   componentDidMount = () => {
@@ -19,21 +21,27 @@ class App extends Component {
   }
 
   storeUser = (user) => this.setState({ loggedUser: user })
-  
+
   fetchUser = () => {
-    this.authService.isloggedin()
-    .then(res => this.storeUser(res.data))
-    .catch(err => this.storeUser(null))
-    
+    AuthService.isloggedin()
+      .then(res => {
+        console.log({ res: res });
+        if (res) {
+          this.storeUser(res.data);
+        }
+      })
+      .catch(err => this.storeUser(null))
+
   }
 
-  
+
   render = () => {
     return (
-      <>
-        <Navigation loggedUser={this.state.loggedUser} />
-        <Routes loggedUser={this.state.loggedUser} storeUser={this.storeUser}/>
-      </>
+      <div>
+        
+        <Navigation loggedUser={this.state.loggedUser} storeUser={this.storeUser} />
+        {this.state.loggedUser !== undefined ? <Routes loggedUser={this.state.loggedUser} storeUser={this.storeUser} /> : <Spinner />}
+      </div>
     );
   }
 }

@@ -9,7 +9,6 @@ class Signup extends Component {
             username: "",
             pwd: ""
         }
-        this.authService = new AuthService()
     }
 
     handleInput = (e) => {
@@ -20,7 +19,7 @@ class Signup extends Component {
     handleFormSubmit = (e) => {
         e.preventDefault();
         const { username, pwd } = this.state
-        this.authService.signup(username, pwd)
+        AuthService.signup(username, pwd)
             .then(res => this.props.history.push("/"))
             .catch(err => console.log(err))
            

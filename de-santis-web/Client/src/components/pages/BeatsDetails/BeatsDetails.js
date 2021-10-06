@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import BeatsService from '../../../services/beats.service';
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
 
 export default class BeatsDetails extends Component {
     constructor() {
@@ -31,11 +33,13 @@ export default class BeatsDetails extends Component {
 
         return (
             <Container>
+
                 {
                     this.state.beats ?
                         <Row>
                             <Col md={6}>
                                 <h1>Beat {this.state.beats.title}</h1>
+                                <AudioPlayer src={this.state.beats.url} onPlay={e => console.log('onplay')}> </AudioPlayer>
                                 <h3>Price: {this.state.beats.price}</h3>
 
                                 <hr />
@@ -44,7 +48,8 @@ export default class BeatsDetails extends Component {
                                 <p>Bpm: {this.state.beats.bpm}</p>
                             </Col>
                             <Col md={4}>
-                                <img id='image-details'src={this.state.beats.cover} alt={this.state.beats.title} />
+                                <img id='image-details' src={this.state.beats.cover} alt={this.state.beats.title} />
+                                
                             </Col>
                         </Row>
 
