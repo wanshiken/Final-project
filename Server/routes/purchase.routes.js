@@ -16,9 +16,11 @@ router.get('/:id', (req, res) => {
 // crear el purchase client
 router.post("/:id", (req, res) => {
     const { track, date, email, name, phone, client, beatInfo } = req.body
+    console.log(req.body)
     const { id } = req.params
     Purchase
         .create({ id, track, date, email, name, phone, client, })
+        .catch(err => console.log(err))
 
 
     Track
