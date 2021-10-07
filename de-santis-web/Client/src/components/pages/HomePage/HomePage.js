@@ -9,6 +9,7 @@ import { FaGithub } from 'react-icons/fa';
 import { BsInstagram } from 'react-icons/bs';
 import { BsYoutube } from 'react-icons/bs';
 import { BsLinkedin } from 'react-icons/bs';
+import Speaker from '../../Speaker/Speaker'
 
 
 
@@ -29,6 +30,7 @@ export default class HomePage extends Component {
 
                 <Row xs={12} md={6} id='speaker'>
                     <Col >
+                        <Speaker />
                         <img id='speaker-left' src="https://res.cloudinary.com/juandesantis/image/upload/v1633348210/De%20Santis.com%20image%20designs/speaker_gordo_nuneuq.png"
                             alt="Speaker" width="150" height="200"></img> 
                         
@@ -40,8 +42,11 @@ export default class HomePage extends Component {
                         </Link>
                     </div>
                     <Col >
-                        <img id='speaker-right' class='effect' src="https://res.cloudinary.com/juandesantis/image/upload/v1633348210/De%20Santis.com%20image%20designs/speaker_gordo_nuneuq.png"
-                            alt="Speaker" width="150" height="200"></img>
+                        <Speaker/>
+                         <img id='speaker-right' class='effect' src="https://res.cloudinary.com/juandesantis/image/upload/v1633348210/De%20Santis.com%20image%20designs/speaker_gordo_nuneuq.png"
+                            alt="Speaker" width="150" height="200">
+                            </img> 
+                           
                     </Col>
                 </Row>
 

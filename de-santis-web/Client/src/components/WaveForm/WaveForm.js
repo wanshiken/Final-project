@@ -24,7 +24,7 @@ export default class WaveForm extends Component {
             waveColor: 'purple',
             progressColor: 'violet',
             barWidth: 6,
-            height:90,
+            height: 90,
             responsive: true,
             hideScrollbar: true,
             barRadius: 2,
@@ -46,10 +46,10 @@ export default class WaveForm extends Component {
 
     handlePlay = () => {
         this.state.wavesurfer.playPause()
-        if(this.handlePlay = {play}){
-           this.handlePlay = {pause}
-        }else {
-            this.handlePlay = {play}
+        if (this.handlePlay = { play }) {
+            this.handlePlay = { pause }
+        } else {
+            this.handlePlay = { play }
         }
     };
 

@@ -85,6 +85,13 @@
   position: relative
 } 
 
+.de-santis-title{
+  font-size: 70px;
+  padding:5px;
+  padding-bottom: 50px;
+
+}
+
 #de-santis-logo-home{
 
   width: 250px;
@@ -177,3 +184,31 @@ transform: scaleX(1);
   padding: 10px;
 }
 
+
+section {
+ 
+  position: absolute;
+  animation: animate 17.5s linear infinite;
+  
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.letter {
+ 
+  position: absolute;
+  font-family: sans-serif;
+  top: -200px;
+  font-weight: bold;
+  font-size: 30px;
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  transform-origin: 0 200px;
+}
