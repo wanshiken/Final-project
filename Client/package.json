@@ -29,8 +29,8 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "cross-env REACT_APP_BASE_URL=http://localhost:5000/api react-scripts start",
-    "build": "cross-env REACT_APP_BASE_URL=https://desantisoficial.herokuapp.com/api react-scripts build",
+    "start": "cross-env REACT_APP_API_URL=http://localhost:5000/api react-scripts start",
+    "build": "cross-env REACT_APP_API_URL=https://desantisoficial.herokuapp.com/api react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

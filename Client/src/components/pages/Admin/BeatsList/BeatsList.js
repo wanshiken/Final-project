@@ -70,8 +70,8 @@ export default class BeatsList extends Component {
                             onChange={this.handleChange}
                             name="searchValue"
                             value={this.state.searchValue}
-                            placeholder="Buscar por título..."
-                            aria-label="buscar"
+                            placeholder="Search beat..."
+                            sans-serif-label="buscar"
                         />
                     </InputGroup>
 

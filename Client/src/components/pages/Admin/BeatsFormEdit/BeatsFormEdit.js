@@ -93,7 +93,7 @@ export default class BeatsFormEdit extends Component {
     render() {
         return (
             <div>
-            <Form onSubmit={this.handleSubmit}>
+            <Form style={{marginLeft:'50px', fontSize:'23px'}} onSubmit={this.handleSubmit}>
                 <Form.Group className="mb-3" controlId="title">
                     <Form.Label>Título: </Form.Label>
                     <Form.Control onChange={(e) => this.handleChange(e)} name="title" value={this.state.title} type="text" placeholder="Introduce título" />
@@ -121,19 +121,23 @@ export default class BeatsFormEdit extends Component {
 
                 <Form.Group className="mb-3" controlId="price">
                     <Form.Label>Precio: </Form.Label>
-                    <Form.Control onChange={(e) => this.handleChange(e)} name="price" value={this.state.price} type="text" placeholder="Introduce el precio" />
+                    <Form.Control onChange={(e) => this.handleChange(e)} name="price" value={this.state.price} type="number" placeholder="Introduce el precio" />
                 </Form.Group>
             
-
-                <Button variant="primary" type="submit">
+                <div className='btn-edit-form'>
+                    <button style={{ position: 'relative', fontSize: '25px', fontWeight: 'bold', background: 'white', }} className="add-beat" type="submit">
                     Submit
-                </Button>
-            </Form>
-
-            <Button as={Link} to='/admin' variant="dark" type="submit">
-                    Volver
+                </button>
+                
+                    <Button style={{ position: 'relative', fontSize: '25px', fontWeight: 'bold',  }} className="add-beat" as={Link} to='/admin' variant='dark' >
+                    Back
                 </Button>
                 </div>
+            </Form>
+            
+                </div>
+
+            
         )
     }
 }

@@ -9,8 +9,8 @@ export default function App() {
     console.log(Letter);
 
     return (
-        <div className="sp">
-            <section>
+        <div className="sp" style={{ width: '1px', height: '1px' }}>
+            <section className='speaker' >
                 {Letter.map((item, index) => {
                     return (
                         <span

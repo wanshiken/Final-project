@@ -7,7 +7,8 @@ class PurchaseService {
         })
     }
     //TODO la llamdada tiene que usar un ID real no :id , algo como ${id}
-    createPurchase = (data, id) => this.instance.post(`/${id}`, data);
+    createPurchase = (id, data) => this.instance.post(`/${id}`, data)
+
 }
 
 export default PurchaseService;

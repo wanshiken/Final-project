@@ -18,11 +18,18 @@
   align-items: center;
 }
 
+.admin-title {
+  font-size: 70px;
+  padding:5px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
 .social-media{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 10px;
+  padding-top: 10px;
 }
 
 .social-media a {
@@ -47,17 +54,18 @@
   position:absolute;
   box-sizing: border-box;
   width:100px ;
-  height: 100%;
+  height: 10%;
   left:0;
   top: -25px;
   transition: .4s linear
 }
 
 .social-media a :hover {
-  color: rgb(0, 43, 134);
+  color: rgb(0, 0, 0);
   transform: scale(0.9);
   transition: transform .4s;
 }
+
 
 .github-logo{
   color: black;
@@ -89,6 +97,14 @@
   font-size: 70px;
   padding:5px;
   padding-bottom: 50px;
+  text-align: center;
+  
+}
+.admin-subtitle .beats-panel{
+ text-align: left;
+ padding-bottom: 30px;
+ padding-top: 60px;
+ font-size: 55px;
 
 }
 
@@ -117,12 +133,16 @@ transform: scaleX(1);
 
 }
 
+
+
 .music {
   width: 85%;
-  padding: 30px;
+  padding: 20px;
   box-sizing: border-box;
   background: rgb(0, 0, 0);
   display: flex;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .info {
@@ -163,9 +183,7 @@ transform: scaleX(1);
   position: absolute;
   width:calc(100% - 6px);
   height:calc(100% - 6px);
- 
   right: 0;
-
   bottom:0;
   z-index: -1;
   transition: transform 0.3s ease;
@@ -184,13 +202,60 @@ transform: scaleX(1);
   padding: 10px;
 }
 
+.div-add-beat .add-beat {
+  text-align: center;
+  padding: 10px;
+  margin: 0px;
+  color: black;
+  
+}
 
-section {
+
+.div-add-beat .add-beat::after, .div-add-beat .add-beat::before {
+  border:3px solid black;
+  content:'';
+  position: absolute;
+  width:calc(100% - 6px);
+  height:calc(100% - 6px);
+  right: 0;
+  bottom:0;
+  z-index: -1;
+  transition: transform 0.3s ease;
+
+}
+
+.div-add-beat .add-beat:hover::after {
+  transform: translate(-5px, -5px);
+}
+
+.div-add-beat .add-beat:hover::before {
+  transform: translate(5px, 5px);
+}
+
+.div-add-beat{
+  padding:10px;
+  
+}
+
+.sp {
+  position: relative;
+  
+}
+
+.speaker-left-effect{
+  position:absolute;
+  right: 30%;
+  animation: animate 17.5s linear infinite;
+}
+.speaker {
  
   position: absolute;
+  top: 130px ;
+  left: 45%;
   animation: animate 17.5s linear infinite;
   
 }
+
 
 @keyframes animate {
   0% {
@@ -205,10 +270,32 @@ section {
  
   position: absolute;
   font-family: sans-serif;
-  top: -200px;
+  top: -140px;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
   display: inline-block;
   color: rgb(0, 0, 0);
-  transform-origin: 0 200px;
+  transform-origin: 0 140px;
 }
+
+.btn-waveform {
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+
+
+
+.btn-edit-form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: auto;
+  margin-top:20px
+}
+
+

@@ -25,14 +25,14 @@ function Navigation(props) {
 
                         {props.loggedUser ?
                             <React.Fragment>
-                                {props.loggedUser.rol === 'admin' && <Link className="nav-link" to="/admin">Mi perfil</Link>}
+                                {props.loggedUser.rol === 'admin' && <Link className="nav-link" to="/admin">Profile</Link>}
                                 <Link className="nav-link" to="/beats">Beats</Link>
-                                <span className="nav-link" onClick={logout}>Logout</span>
+                                <span className="nav-link" onClick={logout}>Log out</span>
                             </React.Fragment>
                             :
                             <React.Fragment>
-                                <Link className="nav-link" to="/registro">Registro</Link>
-                                <Link className="nav-link" to="/iniciar-sesion">Iniciar sesión</Link>
+                                <Link className="nav-link" to="/registro">Sign Up</Link>
+                                <Link className="nav-link" to="/iniciar-sesion">Log In</Link>
                             </React.Fragment>
                         }
 

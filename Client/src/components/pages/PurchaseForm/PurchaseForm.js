@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'react-bootstrap'
-import BeatsService from '../../services/beats.service';
-import PurchaseService from '../../services/purchase.service';
-
+import BeatsService from '../../../services/beats.service';
+import PurchaseService from '../../../services/purchase.service';
+import StripeContainer from '../../StripeContainer/StripeContainer';
 
 class PurchaseForm extends Component {
 
@@ -64,30 +64,42 @@ class PurchaseForm extends Component {
         })
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
+    createPurchase = async (e) => {
         const isValid = this.validate();
 
         if (isValid) {
             console.log(this.state);
             // clear form
-            this.setState(this.state);
-        }
+            this.setState(this.state, () => {
 
-        this.purchaseService.createPurchase({ ...this.state, beatInfo: this.props.beatInfo })
-            .then(() => {
-                this.setState({
-                    track: null,
-                    user: null,
-                    email: '',
-                    name: '',
-                    phone: 0,
-                    subject: '',
-                    to: '',
-                    text: '',
-                })
-            })
-            .catch(err => console.error(err))
+                console.log(this.state, ' el estado')
+                this.purchaseService.createPurchase(this.props.beatInfo._id, { ...this.state, beatInfo: this.props.beatInfo })
+                    .then(() => {
+                        this.setState({
+                            track: null,
+                            user: null,
+                            email: '',
+                            name: '',
+                            phone: 0,
+                            subject: '',
+                            to: '',
+                            text: '',
+                        })
+
+                        this.props.closeModal()
+                    })
+                    .catch(err => console.error(err))
+            });
+        }
+    }
+
+    handleClick() {
+
+        this.setState({ showItem: true })
+    }
+
+    closeStripeModal = () => {
+        this.setState({ ...this.state, showItem: false });
     }
 
 
@@ -97,8 +109,8 @@ class PurchaseForm extends Component {
             // boton compra para descargar el file 
             <Form onSubmit={this.handleSubmit}>
                 <Form.Group className="mb-3" controlId="name">
-                    <Form.Label>Nombre: </Form.Label>
-                    <Form.Control onChange={(e) => this.handleChange(e)} name="name" value={this.state.name} type="text" placeholder="Introduce tu nombre" />
+                    <Form.Label>Name: </Form.Label>
+                    <Form.Control onChange={(e) => this.handleChange(e)} name="name" value={this.state.name} type="text" placeholder="Enter your name" />
                     <div style={{ fontSize: 20, color: "red" }}>
                         {this.state.nameError}
                     </div>
@@ -114,14 +126,14 @@ class PurchaseForm extends Component {
 
                 <Form.Group className="mb-3" controlId="cover">
                     <Form.Label>Mail: </Form.Label>
-                    <Form.Control onChange={(e) => this.handleChange(e)} name="email" type="email" placeholder="Introduce tu correo" />
+                    <Form.Control onChange={(e) => this.handleChange(e)} name="email" type="email" placeholder="Enter your email" />
                     <div style={{ fontSize: 20, color: "red" }}>
                         {this.state.emailError}
                     </div>
                 </Form.Group>
 
+                <StripeContainer createPurchase={this.createPurchase} />
 
-                <Button variant="danger" type="submit"> Comprar Beat </Button>
 
 
             </Form>

@@ -78,10 +78,11 @@ class Login extends Component {
                             {this.state.passwordError}
                         </div>
                     </Form.Group>
-
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
+                    <div className='div-btn-beats' style={{ position: 'relative', textAlign: 'center', }}>
+                        <button type="submit" className='btn' style={{ fontSize: '25px', fontWeight: 'bold' }}>
+                        Enter
+                    </button>
+                    </div>
                 </Form>
             </Container>
         )

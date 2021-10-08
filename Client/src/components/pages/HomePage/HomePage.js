@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Container, Row, Col } from 'react-bootstrap'
-import WaveForm from '../../WaveForm/WaveForm'
-import { render } from 'react-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular, brands } from '@fortawesome/fontawesome-free'
+import { Container, Row, Col } from 'react-bootstrap'
 import { FaGithub } from 'react-icons/fa';
 import { BsInstagram } from 'react-icons/bs';
 import { BsYoutube } from 'react-icons/bs';
@@ -20,8 +16,8 @@ export default class HomePage extends Component {
     render() {
         return (
             <Container >
-
                 <Row xs={6} md={4} id='home-page-image'>
+                <Speaker className='speaker-right-effect' />
 
                     <img id='de-santis-logo-home' src="https://res.cloudinary.com/juandesantis/image/upload/v1633345254/De%20Santis.com%20image%20designs/logo_dj_de_santis_vector_bajsww.png"
                         alt="De Santis Logo"></img>
@@ -30,30 +26,30 @@ export default class HomePage extends Component {
 
                 <Row xs={12} md={6} id='speaker'>
                     <Col >
-                        <Speaker />
+                       
                         <img id='speaker-left' src="https://res.cloudinary.com/juandesantis/image/upload/v1633348210/De%20Santis.com%20image%20designs/speaker_gordo_nuneuq.png"
-                            alt="Speaker" width="150" height="200"></img> 
-                        
+                            alt="Speaker" width="150" height="200"></img>
+
                     </Col>
 
-                    <div className='div-btn-beats' style={{ position: 'relative', textAlign: 'center', }}>
+                    <div className='div-btn-beats' style={{ position: 'relative', textAlign:'center'}}>
                         <Link to="/beats">
                             <button className='btn' style={{ fontSize: '25px', fontWeight: 'bold' }}>Beats here!</button>
                         </Link>
                     </div>
                     <Col >
-                        <Speaker/>
-                         <img id='speaker-right' class='effect' src="https://res.cloudinary.com/juandesantis/image/upload/v1633348210/De%20Santis.com%20image%20designs/speaker_gordo_nuneuq.png"
+                        
+                        <img id='speaker-right' className='effect' src="https://res.cloudinary.com/juandesantis/image/upload/v1633348210/De%20Santis.com%20image%20designs/speaker_gordo_nuneuq.png"
                             alt="Speaker" width="150" height="200">
-                            </img> 
-                           
+                        </img>
+
                     </Col>
                 </Row>
 
 
                 <div class='wave'>
 
-                    <h1 class='follow-me'> Follow me here! </h1>
+                    <h1 class='follow-me'> Follow me! </h1>
                     {/* <WaveForm beatInfo=
                     {{ title: this.props.title, url: this.props.url, cover: this.props.cover, time: this.props.time, bpm: this.props.bpm, price: this.props.price }} /> */}
                 </div>
@@ -61,10 +57,10 @@ export default class HomePage extends Component {
 
                 <fontAwesome />
                 <div class='social-media'>
-                    <a href='' class='github-logo'> <FaGithub /> </a>
-                    <a href='' class='instagram-logo'> <BsInstagram /> </a>
-                    <a href='' class='youtube-logo'> <BsYoutube /></a>
-                    <a href='' class='linkedin-logo'> <BsLinkedin /></a>
+                    <a href='https://github.com/wanshiken' target='blank' class='github-logo'> <FaGithub /> </a>
+                    <a href='https://www.instagram.com/desantis.jb/' target='blank' class='instagram-logo'> <BsInstagram /> </a>
+                    <a href='https://www.youtube.com/channel/UCSnJfWzwUHfiVvWL3nbkPQw' target='blank' class='youtube-logo'> <BsYoutube /></a>
+                    <a href='https://www.linkedin.com/in/juan-desantis/' target='blank' class='linkedin-logo'> <BsLinkedin /></a>
 
                 </div>
 
@@ -88,8 +84,8 @@ export default class HomePage extends Component {
                     </g>
                 </svg></div> */}
             </Container>
-            
-            
+
+
         )
     }
 }

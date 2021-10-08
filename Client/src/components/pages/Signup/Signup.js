@@ -38,10 +38,10 @@ class Signup extends Component {
                         <Form.Label>Password</Form.Label>
                         <Form.Control name="pwd" value={this.state.pwd} onChange={this.handleInput} type="password" placeholder="Create Password" />
                     </Form.Group>
-
-                    <Button variant="primary" type="submit" >
-                        Submit
-                    </Button>
+                    <div className='div-btn-beats' style={{ position: 'relative', textAlign: 'center',}}>
+                        <button  type="submit" className='btn' style={{ fontSize: '25px', fontWeight: 'bold' }} >Sign Up
+                    </button>
+                    </div>
                 </Form>
             </Container>
         )

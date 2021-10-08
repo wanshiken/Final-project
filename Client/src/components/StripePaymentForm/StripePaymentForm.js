@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import axios from "axios"
 import React, { useState } from 'react'
+import { propTypes } from "react-bootstrap/esm/Image"
 
 
 const CARD_OPTIONS = {
@@ -23,7 +24,7 @@ const CARD_OPTIONS = {
     }
 }
 
-export default function PaymentForm() {
+export default function PaymentForm(props) {
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
@@ -48,6 +49,7 @@ export default function PaymentForm() {
                 if (response.data.success) {
                     console.log("Successful payment")
                     setSuccess(true)
+                    props.createPurchase()
                 }
 
             } catch (error) {
@@ -64,10 +66,10 @@ export default function PaymentForm() {
                 <form onSubmit={handleSubmit}>
                     <fieldset className="FormGroup">
                         <div className="FormRow">
-                            <CardElement options={CARD_OPTIONS} />
+                            <CardElement style={{ marginTop: '20px' }} options={CARD_OPTIONS} />
                         </div>
                     </fieldset>
-                    <button>Pay</button>
+                    <button style={{marginTop:'20px', backgroundColor:'white'}} onClick={handleSubmit} type='submit'>Pay</button>
                 </form>
                 :
                 <div>

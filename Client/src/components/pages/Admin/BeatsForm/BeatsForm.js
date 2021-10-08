@@ -125,7 +125,7 @@ export default class BeatsForm extends Component {
                 </Form.Group>
             
 
-                <Button variant="primary" type="submit">
+                    <Button className='div-btn-beats' style={{ fontSize: '25px', fontWeight: 'bold', backgroundColor:'white', color:'black' }}  type="submit">
                     Submit
                 </Button>
             </Form>

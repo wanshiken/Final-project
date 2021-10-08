@@ -35,9 +35,10 @@ class Profile extends Component {
     render = () => {
         return (
             <Container>
-                <h1>¡Bienvenid@, {this.props.loggedUser.username}!</h1>
+                <h1 className='admin-title'> Welcome - {this.props.loggedUser.username}!</h1>
                 <div>
-                    <Button block className="mt-2" onClick={() => this.openModal()}>Añadir beat</Button>
+                <div className='div-add-beat' style={{ position: 'relative', textAlign: 'center', }}>
+                    <button style={{ position:'relative', fontSize: '25px', fontWeight: 'bold', background:'white' }} className="add-beat" onClick={() => this.openModal()}>Añadir beat</button>
                     <Modal show={this.state.show} onHide={() => this.closeModal()}>
                         <Modal.Header closeButton>
                             <Modal.Title>Añadir beat</Modal.Title>
@@ -46,15 +47,15 @@ class Profile extends Component {
                             <BeatsForm closeModal={() => this.closeModal()} refreshBeats={this.refreshBeats} />
                         </Modal.Body>
                     </Modal>
-                    <h2>
-                      
-                    </h2>
-                    <h3>
-                        Tus Beats:
+                </div>
+                    <div className='admin-subtitle'>
+                        <h3 className='beats-panel'>
+                        Beats panel:
+                    </h3>
 
                         <BeatsList loggedUser={this.props.loggedUser} />
 
-                    </h3>
+                    </div>
                 </div>
             </Container>
         )
