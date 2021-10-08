@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "08e4f38007dd3f82d517",
+    "revision": "2c3051e8f2bd641c4b4a",
     "url": "/static/css/main.b4422bdf.chunk.css"
   },
   {
-    "revision": "08e4f38007dd3f82d517",
-    "url": "/static/js/main.601b0758.chunk.js"
+    "revision": "2c3051e8f2bd641c4b4a",
+    "url": "/static/js/main.3e8b391c.chunk.js"
   },
   {
     "revision": "1621ac9e9cda15efd171",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/static/media/Logo de santis beats png.17cc444c.png"
   },
   {
-    "revision": "f929981fc9402f81e8e286496345b0e7",
+    "revision": "57a7ad8f9f2bafb21bb0739408a1c74f",
     "url": "/index.html"
   }
 ];
