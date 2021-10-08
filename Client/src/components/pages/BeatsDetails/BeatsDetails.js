@@ -75,7 +75,7 @@ export default class BeatsDetails extends Component {
                                     </Modal.Body>
                                 </Modal>
 
-                                <Button style={{ position: 'relative', fontSize: '25px', fontWeight: 'bold', marginLeft:'30px', marginTop:'21px'}} as={Link} to='/admin' variant='dark' >Back</Button>
+                                <Button style={{ position: 'relative', fontSize: '25px', fontWeight: 'bold', marginLeft:'30px', marginTop:'21px'}} as={Link} to='/beats' variant='dark' >Back</Button>
                             </Col>
                             <Col md={4}>
                                 <img id='image-details' src={this.state.beats.cover} alt={this.state.beats.title} />

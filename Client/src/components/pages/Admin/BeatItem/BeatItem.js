@@ -69,6 +69,7 @@ export default class BeatItem extends Component {
         return (
             <div>
                 <WaveForm
+                    idx={this.props.idx}
                     refreshBeats={this.props.refreshBeats}
                     loggedUser={this.props.loggedUser}
                     beatInfo=

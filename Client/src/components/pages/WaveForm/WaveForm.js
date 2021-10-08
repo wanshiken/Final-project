@@ -28,7 +28,7 @@ export default class WaveForm extends Component {
 
     componentDidMount() {
         let wavesurfer = WaveSurfer.create({
-            container: `#${this.props.beatInfo.title}`,
+            container: `#${this.props.idx}`,
             waveColor: 'purple',
             progressColor: 'violet',
             barWidth: 6,
@@ -40,7 +40,7 @@ export default class WaveForm extends Component {
 
         this.setState({ wavesurfer })
 
-          wavesurfer.load(this.props.beatInfo.url);
+        wavesurfer.load(this.props.beatInfo.url);
 
         //  wavesurfer.on('ready', function () {
         //      wavesurfer.playPause();
@@ -113,7 +113,7 @@ export default class WaveForm extends Component {
                     <h1> {this.props.beatInfo.title} </h1>
                     <p>  Price: {this.props.beatInfo.price}€  </p>
 
-                    <div id={this.props.beatInfo.title}></div>
+                    <div id={this.props.idx}></div>
                     <div className='controls'>
                         <img id='playBtn' src={this.state.play ? play : pause} onClick={this.handlePlay} ></img>
                         <img src={stop} onClick={this.handleStop}></img>
@@ -138,7 +138,7 @@ export default class WaveForm extends Component {
                             <button id='details-btn' style={{ position: 'relative', fontSize: '25px', fontWeight: 'bold', background: 'white' }}  >Details</button>
                         </Link>
 
-                        <button id='purchase-btn' style={{ position: 'relative', fontSize: '25px', fontWeight: 'bold', background: 'white' }}  onClick={() => this.openModal()}>Buy beat</button>
+                        <button id='purchase-btn' style={{ position: 'relative', fontSize: '25px', fontWeight: 'bold', background: 'white' }} onClick={() => this.openModal()}>Buy beat</button>
                         <Modal show={this.state.show} onHide={() => this.closeModal()}>
                             <Modal.Header closeButton>
                                 <Modal.Title>Purchase Details {this.props.beatInfo.title}</Modal.Title>

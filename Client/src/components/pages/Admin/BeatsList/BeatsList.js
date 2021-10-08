@@ -39,9 +39,9 @@ export default class BeatsList extends Component {
         const filteredbeats = this.state.beats.filter(beat => beat.title.toLowerCase().includes(this.state.searchValue.toLowerCase()))
         return (
             filteredbeats.length > 0 ?
-                filteredbeats.map(beat => {
+                filteredbeats.map((beat, idx) => {
                     return (
-                        <BeatItem loggedUser={this.props.loggedUser} key={beat._id} {...beat} refreshBeats={this.refreshBeats} />
+                        <BeatItem idx={'a' + idx} loggedUser={this.props.loggedUser} key={beat._id} {...beat} refreshBeats={this.refreshBeats} />
                     )
                 }) :
                 <p>Sin resultados</p>
@@ -63,7 +63,7 @@ export default class BeatsList extends Component {
             this.state.beats ?
 
                 <div>
-                    
+
 
                     <InputGroup className="mb-3 mt-4">
                         <FormControl
@@ -84,9 +84,9 @@ export default class BeatsList extends Component {
                 :
                 <h3>Loading...</h3>
 
-                
 
-                
+
+
 
 
         )

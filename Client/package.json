@@ -32,7 +32,8 @@
     "start": "cross-env REACT_APP_API_URL=http://localhost:5000/api react-scripts start",
     "build": "cross-env REACT_APP_API_URL=https://desantisoficial.herokuapp.com/api react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "rm -rf ./build/*; rm -rf ../Server/public/*; npm run build; mv ./build/* ../Server/public; cd ..; git add .; git commit -m deploy; git subtree push --prefix Server heroku_app_master main"
   },
   "eslintConfig": {
     "extends": [
