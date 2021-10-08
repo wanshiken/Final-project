@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import { FormControl, InputGroup, Row } from 'react-bootstrap'
-// import BeatsForm from '../BeatsForm/BeatsForm';
 import BeatsService from '../../../../services/beats.service'
 import BeatItem from '../BeatItem/BeatItem';
-
-
-
 
 export default class BeatsList extends Component {
     constructor(props) {
@@ -36,7 +32,7 @@ export default class BeatsList extends Component {
     }
 
     displayBeats = () => {
-        const filteredbeats = this.state.beats.filter(beat => beat.title.toLowerCase().includes(this.state.searchValue.toLowerCase()))
+        const filteredbeats = this.state.beats?.filter(beat => beat.title.toLowerCase().includes(this.state.searchValue.toLowerCase()))
         return (
             filteredbeats.length > 0 ?
                 filteredbeats.map((beat, idx) => {
