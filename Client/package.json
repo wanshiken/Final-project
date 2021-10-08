@@ -29,8 +29,8 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "cross-env REACT_APP_API_URL=http://localhost:5000/api react-scripts start",
-    "build": "cross-env REACT_APP_API_URL=https://desantisoficial.herokuapp.com/api react-scripts build",
+    "start": "cross-env REACT_APP_PAYPAL_API_SECRET=EDl-8G4h0G2flrnK9JkZEOcrBQbMwb__kgID8Hmq5vERgbIDRjzAARq58ixjhOCE9Oj844kglQLiCcYC REACT_APP_PAYPAL_CLIENT_ID=AU2JbaQo7PM_21J9ltM1ttJOGaLtlOhQkY8CS2t7zvWc8vpvDO6bv9-_BJt_NMEPXEx_v0OedSVWDZUQ REACT_APP_API_URL=http://localhost:5000/api react-scripts start",
+    "build": "cross-env REACT_APP_PAYPAL_API_SECRET=EDl-8G4h0G2flrnK9JkZEOcrBQbMwb__kgID8Hmq5vERgbIDRjzAARq58ixjhOCE9Oj844kglQLiCcYC REACT_APP_PAYPAL_CLIENT_ID=AU2JbaQo7PM_21J9ltM1ttJOGaLtlOhQkY8CS2t7zvWc8vpvDO6bv9-_BJt_NMEPXEx_v0OedSVWDZUQ REACT_APP_API_URL=https://desantisoficial.herokuapp.com/api react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "rm -rf ./build/*; rm -rf ../Server/public/*; npm run build; mv ./build/* ../Server/public; cd ..; git add .; git commit -m deploy; git subtree push --prefix Server heroku_app_master main"
