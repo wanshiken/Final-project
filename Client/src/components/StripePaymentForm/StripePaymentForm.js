@@ -41,7 +41,7 @@ export default function PaymentForm(props) {
         if (!error) {
             try {
                 const { id } = paymentMethod
-                const response = await axios.post("http://localhost:5000/payment", {
+                const response = await axios.post(" https://desantisoficial.herokuapp.com/api/payment", {
                     amount: 1000,
                     id
                 })
@@ -69,7 +69,7 @@ export default function PaymentForm(props) {
                             <CardElement style={{ marginTop: '20px' }} options={CARD_OPTIONS} />
                         </div>
                     </fieldset>
-                    <button style={{marginTop:'20px', backgroundColor:'white'}} onClick={handleSubmit} type='submit'>Pay</button>
+                    <button style={{ marginTop: '20px', backgroundColor: 'white' }} onClick={handleSubmit} type='submit'>Pay</button>
                 </form>
                 :
                 <div>

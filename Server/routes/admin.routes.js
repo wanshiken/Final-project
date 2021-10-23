@@ -11,7 +11,7 @@ const { checkId, isLoggedIn, checkRoles } = require("../middleware/middleware")
 router.get('/beats', (req, res) => {
     Track
         .find()
-        .select('title cover url time bpm price')
+        // .select('title cover url time bpm price')
         .then(tracks => res.status(200).json(tracks), )
         .catch(err => res.status(500).json({ code: 500, message: "Error retrieving tracks", err }))
 })

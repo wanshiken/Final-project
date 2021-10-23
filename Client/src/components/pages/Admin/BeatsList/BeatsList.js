@@ -23,6 +23,7 @@ export default class BeatsList extends Component {
     refreshBeats = () => {
         this.beatService.getBeats()
             .then(res => {
+                console.log(res.data)
                 this.setState({
                     ...this.state,
                     beats: res.data
@@ -32,15 +33,19 @@ export default class BeatsList extends Component {
     }
 
     displayBeats = () => {
-        // const filteredbeats = this.state.beats.filter(beat => beat.title.toLowerCase().includes(this.state.searchValue.toLowerCase()))
+        const filteredbeats = this.state.beats.filter(beat => beat.title.toLowerCase().includes(this.state.searchValue.toLowerCase()) )
+        // const filteredbeats = this.state.beats?.filter(beat => beat.title?.toLowerCase().includes(this.state.searchValue.toLowerCase()))
         return (
-            this.state.beats.length > 0 ?
-                this.state.beats.map((beat, idx) => {
-                    return (
-                        <BeatItem idx={`a${idx}`} loggedUser={this.props.loggedUser} key={beat._id} {...beat} refreshBeats={this.refreshBeats} />
-                    )
-                }) :
-                <p>Sin resultados</p>
+            <>
+                {filteredbeats.length > 0 ?
+                    filteredbeats.map((beat, idx) => {
+                        return (
+                            <BeatItem idx={'a' + idx} loggedUser={this.props.loggedUser} key={beat._id} {...beat} refreshBeats={this.refreshBeats} />
+                        )
+                    })
+                    :
+                    <p>Sin resultados</p>}
+            </>
         )
     }
 
