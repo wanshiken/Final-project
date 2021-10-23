@@ -41,7 +41,7 @@ export default function PaymentForm(props) {
         if (!error) {
             try {
                 const { id } = paymentMethod
-                const response = await axios.post(" https://desantisoficial.herokuapp.com/api/payment", {
+                const response = await axios.post("https://desantisoficial.herokuapp.com/api/payment", {
                     amount: 1000,
                     id
                 })
